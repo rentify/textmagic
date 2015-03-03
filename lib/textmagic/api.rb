@@ -93,7 +93,7 @@ module TextMagic
       single = args.size == 1 && args.first.is_a?(String)
       phones = args.flatten
       raise Error.new(9, "Invalid phone number format") unless API.validate_phones(phones)
-      options[:send_time] = options[:send_time].to_i if options[:send_time]
+      # options[:send_time] = options[:send_time].to_i if options[:send_time]
       hash = Executor.execute("send", @username, @password, options.merge(:text => text, :phone => phones.join(",")))
       TextMagic::API::Response.send(hash, single)
     end
